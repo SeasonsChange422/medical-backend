@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @author dhx
@@ -16,12 +17,12 @@ public class Diagnosis implements Serializable {
     private Long id;
     private Long symptomId;
     private String description;
-    private DateTime createTime;
+    private Date createTime;
 
     public Diagnosis() {
     }
 
-    public Diagnosis(Long symptomId, String description, DateTime createTime) {
+    public Diagnosis(Long symptomId, String description, Date createTime) {
         this.symptomId = symptomId;
         this.description = description;
         this.createTime = createTime;
@@ -51,11 +52,11 @@ public class Diagnosis implements Serializable {
         this.description = description;
     }
 
-    public DateTime getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(DateTime createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

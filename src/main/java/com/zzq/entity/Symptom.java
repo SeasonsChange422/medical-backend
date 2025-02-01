@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @author dhx
@@ -32,12 +33,12 @@ public class Symptom implements Serializable {
     private boolean severityMild;
     private boolean severityModerate;
     private boolean severityNone;
-    private DateTime createTime;
+    private Date createTime;
 
     public Symptom() {
     }
 
-    public Symptom( Long userId, boolean tiredness, boolean dryCough, boolean difficultyInBreathing, boolean soreThroat, boolean noSymptom, boolean pains, boolean nasalCongestion, boolean runnyNose, boolean noExperiencing, boolean age0_9, boolean age10_19, boolean age20_24, boolean age25_59, boolean age60, boolean severityMild, boolean severityModerate, boolean severityNone, DateTime createTime) {
+    public Symptom( Long userId, boolean tiredness, boolean dryCough, boolean difficultyInBreathing, boolean soreThroat, boolean noSymptom, boolean pains, boolean nasalCongestion, boolean runnyNose, boolean noExperiencing, boolean age0_9, boolean age10_19, boolean age20_24, boolean age25_59, boolean age60, boolean severityMild, boolean severityModerate, boolean severityNone, Date createTime) {
         this.userId = userId;
         this.tiredness = tiredness;
         this.dryCough = dryCough;
@@ -211,11 +212,11 @@ public class Symptom implements Serializable {
         this.severityNone = severityNone;
     }
 
-    public DateTime getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(DateTime createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

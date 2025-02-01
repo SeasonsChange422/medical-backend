@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @author dhx
@@ -15,15 +16,17 @@ public class Feedback implements Serializable {
     @TableId
     private Long id;
     private Long diagnosisId;
+    private Long userId;
     private String feedback;
     private Integer score;
-    private DateTime createTime;
+    private Date createTime;
 
     public Feedback() {
     }
 
-    public Feedback(Long diagnosisId, String feedback, Integer score, DateTime createTime) {
+    public Feedback(Long diagnosisId,Long userId, String feedback, Integer score, Date createTime) {
         this.diagnosisId = diagnosisId;
+        this.userId = userId;
         this.feedback = feedback;
         this.score = score;
         this.createTime = createTime;
@@ -45,6 +48,14 @@ public class Feedback implements Serializable {
         this.diagnosisId = diagnosisId;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     public String getFeedback() {
         return feedback;
     }
@@ -61,11 +72,11 @@ public class Feedback implements Serializable {
         this.score = score;
     }
 
-    public DateTime getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(DateTime createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }
