@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @author dhx
  * @date 2025/2/1 14:16
  */
-@Controller
+@RestController
 public class SymptomController {
     @Autowired
     private SymptomService symptomService;

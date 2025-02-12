@@ -14,5 +14,6 @@ public interface TherapyService {
     public Result getTherapyById(Long therapyId);
     // 获取某次病历的治疗建议
     public Result getTherapyBySymptomId(Long symptomId);
-
+    // 获取当前用户的治疗建议
+    public Result getTherapyByUserId(Long userId);
 }

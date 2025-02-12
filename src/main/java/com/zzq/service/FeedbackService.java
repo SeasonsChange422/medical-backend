@@ -14,4 +14,6 @@ public interface FeedbackService {
     public Result getFeedbackById(Long feedbackId);
     // 获取当前用户所有反馈
     public Result getFeedbackByUserId(String token);
+    // 获取某次诊断的反馈
+    public Result getFeedbackByDiagnosisId(Long diagnosisId);
 }

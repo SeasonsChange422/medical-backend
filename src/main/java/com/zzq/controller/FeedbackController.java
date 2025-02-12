@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @author dhx
  * @date 2025/2/1 14:17
  */
-@Controller
+@RestController
 public class FeedbackController {
     @Autowired
     private FeedbackService feedbackService;
@@ -29,5 +29,10 @@ public class FeedbackController {
     @GetMapping("/api/feedback/getFeedbackByUserId")
     public Result getFeedbackByUserId(@RequestHeader("token") String token){
         return feedbackService.getFeedbackByUserId(token);
+    }
+
+    @GetMapping("/api/feedback/getFeedbackByDiagnosisId")
+    public Result getFeedbackByDiagnosisId(@RequestParam Long diagnosisId){
+        return feedbackService.getFeedbackByDiagnosisId(diagnosisId);
     }
 }

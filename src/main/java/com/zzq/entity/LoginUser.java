@@ -24,6 +24,9 @@ public class LoginUser {
         this.password = password;
     }
 
+    public LoginUser() {
+    }
+
     public LoginUser(String username, String password) {
         this.username = username;
         this.password = password;

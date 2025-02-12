@@ -2,6 +2,9 @@ package com.zzq.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
 
 import java.io.Serializable;
@@ -13,12 +16,16 @@ import java.sql.Date;
  */
 @TableName("feedback")
 public class Feedback implements Serializable {
+    @JsonSerialize(using = ToStringSerializer.class)
     @TableId
     private Long id;
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long diagnosisId;
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long userId;
     private String feedback;
     private Integer score;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
     private Date createTime;
 
     public Feedback() {

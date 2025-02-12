@@ -2,6 +2,9 @@ package com.zzq.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
 
 import java.io.Serializable;
@@ -13,19 +16,22 @@ import java.sql.Date;
  */
 @TableName("therapy")
 public class Therapy implements Serializable {
+    @JsonSerialize(using = ToStringSerializer.class)
     @TableId
     private Long id;
-    private Long symptomId;
-    private String description;
-    private Date createTime;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long userId;
+    private String therapy;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
+    private Date updateTime;
 
     public Therapy() {
     }
 
-    public Therapy(Long symptomId, String description, Date createTime) {
-        this.symptomId = symptomId;
-        this.description = description;
-        this.createTime = createTime;
+    public Therapy(Long userId, String therapy, Date updateTime) {
+        this.userId = userId;
+        this.therapy = therapy;
+        this.updateTime = updateTime;
     }
 
     public Long getId() {
@@ -36,27 +42,27 @@ public class Therapy implements Serializable {
         this.id = id;
     }
 
-    public Long getSymptomId() {
-        return symptomId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setSymptomId(Long symptomId) {
-        this.symptomId = symptomId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTherapy() {
+        return therapy;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTherapy(String therapy) {
+        this.therapy = therapy;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

@@ -20,7 +20,7 @@ public class TherapyServiceImpl implements TherapyService{
     private TherapyMapper therapyMapper;
     @Override
     public Result newTherapy(Therapy therapy) {
-        therapy.setCreateTime(new Date(System.currentTimeMillis()));
+        therapy.setUpdateTime(new Date(System.currentTimeMillis()));
         if(therapyMapper.insert(therapy)==1){
             return Result.okResult(200,"上传成功");
         }
@@ -39,6 +39,15 @@ public class TherapyServiceImpl implements TherapyService{
     @Override
     public Result getTherapyBySymptomId(Long symptomId) {
         Therapy therapy = therapyMapper.selectOne(new QueryWrapper<Therapy>().eq("symptom_id",symptomId));
+        if(therapy!=null){
+            return Result.okResult(therapy);
+        }
+        return Result.errorResult(AppHttpCodeEnum.SYSTEM_ERROR);
+    }
+
+    @Override
+    public Result getTherapyByUserId(Long userId) {
+        Therapy therapy = therapyMapper.selectOne(new QueryWrapper<Therapy>().eq("user_id",userId));
         if(therapy!=null){
             return Result.okResult(therapy);
         }

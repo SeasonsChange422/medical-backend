@@ -1,10 +1,15 @@
 package com.zzq.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @author dhx
@@ -12,20 +17,23 @@ import java.io.Serializable;
  */
 @TableName("user")
 public class User implements Serializable {
+    @JsonSerialize(using = ToStringSerializer.class)
     @TableId
     private Long id;
     private String username;
     private String password;
     private int gender;
-    private int name;
-    private DateTime birthday;
+    private String name;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
+    private Date birthday;
     private String phone;
+    @TableField("isAdmin")
     private boolean isAdmin;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, int gender, int name, DateTime birthday, String phone, boolean isAdmin) {
+    public User(Long id, String username, String password, int gender, String name, Date birthday, String phone, boolean isAdmin) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -73,19 +81,19 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public DateTime getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(DateTime birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

@@ -54,4 +54,13 @@ public class FeedbackServiceImpl implements FeedbackService{
         }
         return Result.errorResult(AppHttpCodeEnum.SYSTEM_ERROR);
     }
+
+    @Override
+    public Result getFeedbackByDiagnosisId(Long diagnosisId) {
+        Feedback feedback = feedbackMapper.selectOne(new QueryWrapper<Feedback>().eq("diagnosis_id",diagnosisId));
+        if(feedback!=null){
+            return Result.okResult(feedback);
+        }
+        return Result.errorResult(AppHttpCodeEnum.SYSTEM_ERROR);
+    }
 }

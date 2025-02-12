@@ -5,16 +5,13 @@ import com.zzq.entity.Diagnosis;
 import com.zzq.service.DiagnosisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author dhx
  * @date 2025/2/1 14:17
  */
-@Controller
+@RestController
 public class DiagnosisController {
     @Autowired
     private DiagnosisService diagnosisService;

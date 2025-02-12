@@ -1,7 +1,11 @@
 package com.zzq.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
 
 import java.io.Serializable;
@@ -13,26 +17,39 @@ import java.sql.Date;
  */
 @TableName("symptom")
 public class Symptom implements Serializable {
+    @JsonSerialize(using = ToStringSerializer.class)
     @TableId
     private Long id;
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long userId;
     private boolean tiredness;
+    @TableField("dryCough")
     private boolean dryCough;
+    @TableField("difficultyInBreathing")
     private boolean difficultyInBreathing;
+    @TableField("soreThroat")
     private boolean soreThroat;
+    @TableField("noSymptom")
     private boolean noSymptom;
     private boolean pains;
+    @TableField("nasalCongestion")
     private boolean nasalCongestion;
+    @TableField("runnyNose")
     private boolean runnyNose;
+    @TableField("noExperiencing")
     private boolean noExperiencing;
     private boolean age0_9;
     private boolean age10_19;
     private boolean age20_24;
     private boolean age25_59;
     private boolean age60;
+    @TableField("severityMild")
     private boolean severityMild;
+    @TableField("severityModerate")
     private boolean severityModerate;
+    @TableField("severityNone")
     private boolean severityNone;
+    @JsonFormat(pattern = "yyyy-MM-dd", locale = "zh", timezone = "GMT+8")
     private Date createTime;
 
     public Symptom() {
